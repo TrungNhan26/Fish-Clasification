@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Ocean</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+    <!-- Header với tiêu đề Fish classification -->
+    <header>
+        <h1>Fish Classification</h1>
+        <button id="assignImageButton">Import Image</button>
+        <input type="file" id="fileInput" style="display: none;" accept="image/*">
+        <div id="imageContainer" style="border: 6px solid #00796b; padding: 10px; display: block; margin-top: 30px;">
+            <!-- Image will be displayed here -->
+        </div>
+        
+        <!-- Dòng hiển thị kết quả dự đoán -->
+        
+        <div id="predictionResult" style="margin-top: 20px; font-size: 20px; font-weight: bold; color: #00796b;">
+            Category:<!-- Kết quả dự đoán sẽ hiển thị tại đây -->
+        </div>
+    </header>
+    
+    
+<body>
+    <div class="ocean-container">
+        <div class="wave"></div>
+        <div class="wave"></div>
+
+        <!-- Sinh vật biển -->
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
+
+       
+        <div class="bubble bubble-1"></div>
+        <div class="bubble bubble-2"></div>
+        <div class="bubble bubble-3"></div>
+        <div class="bubble bubble-4"></div>
+        <div class="bubble bubble-5"></div>
+        <div class="bubble bubble-6"></div>
+        <div class="bubble bubble-7"></div>
+        <div class="bubble bubble-8"></div>
+        <div class="bubble bubble-9"></div>
+        <div class="bubble bubble-10"></div>
+        <div class="bubble bubble-11"></div>
+        <div class="bubble bubble-12"></div>
+        <div class="bubble bubble-13"></div>
+        <div class="bubble bubble-14"></div>
+        <div class="bubble bubble-15"></div>
+        <div class="bubble bubble-16"></div>
+        <div class="bubble bubble-17"></div>
+        <div class="bubble bubble-18"></div>
+        <div class="bubble bubble-19"></div>
+        <div class="bubble bubble-20"></div>
+        <div class="bubble bubble-21"></div>
+        <div class="bubble bubble-22"></div>
+        <div class="bubble bubble-23"></div>
+        <div class="bubble bubble-24"></div>
+        <div class="bubble bubble-25"></div>
+        <div class="bubble bubble-26"></div>
+        <div class="bubble bubble-27"></div>
+        <div class="bubble bubble-28"></div>
+        <div class="bubble bubble-29"></div>
+        <div class="bubble bubble-30"></div>
+        
+    </div>
+
+    <script>
+        function randomizeCreaturePositions() {
+            document.querySelectorAll('.sea-creature').forEach(creature => {
+                const randomTop = Math.random() * 80; // Ngẫu nhiên trong khoảng 0-80%
+                const randomLeft = Math.random() * 100; // Ngẫu nhiên trong khoảng 0-100%
+                creature.style.top = `${randomTop}%`;
+                creature.style.left = `${randomLeft}%`;
+            });
+
+            // Randomize bubbles
+            document.querySelectorAll('.bubble').forEach(bubble => {
+                const randomLeft = Math.random() * 100;
+                const randomAnimationDuration = Math.random() * 4 + 4; // 4s đến 8s
+                bubble.style.left = `${randomLeft}%`;
+                bubble.style.animationDuration = `${randomAnimationDuration}s`;
+            });
+        }
+
+        // Đặt vị trí ban đầu và cập nhật mỗi 8 giây
+        randomizeCreaturePositions();
+        setInterval(randomizeCreaturePositions, 8000);
+
+        document.getElementById('assignImageButton').addEventListener('click', function() {
+            document.getElementById('fileInput').click();
+        });
+        
+        document.getElementById('fileInput').addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            if (file) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    var img = new Image();
+                    img.src = e.target.result;
+                    img.alt = "Selected Image";
+                    var imageContainer = document.getElementById('imageContainer');
+                    imageContainer.innerHTML = '';  // Xóa ảnh cũ
+                    imageContainer.appendChild(img);  // Thêm ảnh mới vào khung
+        
+                    // Gọi API phân loại sau khi hiển thị ảnh
+                    classifyImage(file);
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+        
+        function classifyImage(file) {
+            // Tạo đối tượng FormData để gửi ảnh tới API
+            const formData = new FormData();
+            formData.append("file", file);  // Sử dụng 'file' làm key theo yêu cầu của API
+        
+            // Gửi yêu cầu POST tới API phân loại ảnh
+            fetch('http://127.0.0.1:8000/classify', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())  // Phân tích JSON từ phản hồi
+            .then(data => {
+                // Giả sử API trả về đối tượng có thuộc tính 'label' chứa nhãn phân loại
+                const label = data.label || "Unknown";  // Nếu không có nhãn, hiển thị "Unknown"
+                
+                // Hiển thị kết quả phân loại trên giao diện
+                document.getElementById('predictionResult').textContent = `Category: ${label}`;
+            })
+            .catch(error => {
+                console.error("Error classifying image:", error);
+                document.getElementById('predictionResult').textContent = "Category: Error classifying image.";  // Hiển thị thông báo lỗi
+            });
+        }
+        
+        
+        
+    </script>
+</body>
+</html>

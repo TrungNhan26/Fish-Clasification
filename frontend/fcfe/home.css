@@ -1,0 +1,148 @@
+.sea-creature {
+    position: absolute;
+    animation: swim 25s infinite linear; /* Tạo hiệu ứng bơi */
+    transition: top 5s ease, left 5s ease; /* Chuyển động chậm hơn (5 giây) */
+    position: absolute;
+    transition: all 2s ease;
+}
+
+@keyframes swim {
+    0% {
+        transform: translateX(-10px);
+    }
+    50% {
+        transform: translateX(10px);
+    }
+    100% {
+        transform: translateX(-10px);
+    }
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: #87CEEB; /* Màu xanh bầu trời */
+}
+
+
+/* Sea Creatures Styling */
+.sea-creature {
+    position: absolute;
+    animation: swim 25s infinite linear; /* Tạo hiệu ứng bơi */
+    transition: all 2s ease;
+    mix-blend-mode: multiply; /* Hòa trộn để bỏ trắng */
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    filter: brightness(1.5) contrast(2.5); /* Điều chỉnh độ sáng và tương phản */
+    z-index: 1; /* Đặt cá ở dưới header */
+}
+
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;  /* Căn ngang */
+    align-items: center;      /* Căn dọc */
+}
+
+/* Bubbles */
+.bubble {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(19, 19, 111, 0.3);
+    bottom: 0;
+    animation: bubble-rise linear infinite;
+}
+
+@keyframes bubble-rise {
+    0% {
+        transform: translateY(0) scale(0.5);
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+.bubble-1 { width: 10px; height: 10px; }
+.bubble-2 { width: 15px; height: 15px; }
+.bubble-3 { width: 25px; height: 25px; }
+.bubble-4 { width: 10px; height: 10px; }
+.bubble-5 { width: 15px; height: 15px; }
+.bubble-6 { width: 25px; height: 25px; }
+.bubble-7 { width: 10px; height: 10px; }
+.bubble-8 { width: 15px; height: 15px; }
+.bubble-9 { width: 25px; height: 25px; }
+.bubble-10 { width: 10px; height: 10px; }
+.bubble-11 { width: 15px; height: 15px; }
+.bubble-12 { width: 25px; height: 25px; }
+.bubble-13 { width: 10px; height: 10px; }
+.bubble-14 { width: 15px; height: 15px; }
+.bubble-15 { width: 25px; height: 25px; }
+.bubble-16 { width: 10px; height: 10px; }
+.bubble-17 { width: 15px; height: 15px; }
+.bubble-18 { width: 25px; height: 25px; }
+.bubble-19 { width: 12px; height: 12px; }
+.bubble-20 { width: 18px; height: 18px; }
+.bubble-21 { width: 30px; height: 30px; }
+.bubble-22 { width: 12px; height: 12px; }
+.bubble-23 { width: 18px; height: 18px; }
+.bubble-24 { width: 30px; height: 30px; }
+.bubble-25 { width: 12px; height: 12px; }
+.bubble-26 { width: 18px; height: 18px; }
+.bubble-27 { width: 30px; height: 30px; }
+.bubble-28 { width: 12px; height: 12px; }
+.bubble-29 { width: 18px; height: 18px; }
+.bubble-30 { width: 30px; height: 30px; }
+
+
+
+
+
+header {
+    text-align: center;
+    background-color: white;
+    padding: 300px;
+    border-radius: 15px; /* Bo góc */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+    width: 600px; /* Kích thước khung */
+    position: relative; /* Đảm bảo z-index hoạt động */
+    z-index: 10; /* Đặt header lên trên cùng */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 50px;
+    color: #00796b;
+}
+
+button {
+    margin-top: 40px; /* Tăng giá trị này để tạo khoảng cách lớn hơn */
+    padding: 20px 50px;
+    background-color: #00796b;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #004d40; /* Màu khi hover */
+}
+
+
+#imageContainer img {
+    max-width: 270px;    /* Giới hạn chiều rộng ảnh tối đa là 100% chiều rộng của khung chứa */
+    height: auto;       /* Giữ tỷ lệ khung hình của ảnh */
+    max-height: 300px;  /* Giới hạn chiều cao ảnh tối đa */
+}
+
+
