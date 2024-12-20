@@ -4,121 +4,302 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Ocean</title>
-    <link rel="stylesheet" href="home.css">
-</head>
-    <!-- Header với tiêu đề Fish classification -->
-    <header>
-        <h1>Fish Classification</h1>
-        <button id="assignImageButton">Import Image</button>
-        <input type="file" id="fileInput" style="display: none;" accept="image/*">
-        <div id="imageContainer" style="border: 6px solid #00796b; padding: 10px; display: block; margin-top: 30px;">
-            <!-- Image will be displayed here -->
-        </div>
-        
-        <!-- Dòng hiển thị kết quả dự đoán -->
-        
-        <div id="predictionResult" style="margin-top: 20px; font-size: 20px; font-weight: bold; color: #00796b;">
-            Category:<!-- Kết quả dự đoán sẽ hiển thị tại đây -->
-        </div>
-    </header>
-    
-    
-<body>
-    <div class="ocean-container">
-        <div class="wave"></div>
-        <div class="wave"></div>
-
-        <!-- Sinh vật biển -->
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-        <img src="resource/img/clownFish.png" alt="Fish" class="sea-creature fish">
-
-       
-        <div class="bubble bubble-1"></div>
-        <div class="bubble bubble-2"></div>
-        <div class="bubble bubble-3"></div>
-        <div class="bubble bubble-4"></div>
-        <div class="bubble bubble-5"></div>
-        <div class="bubble bubble-6"></div>
-        <div class="bubble bubble-7"></div>
-        <div class="bubble bubble-8"></div>
-        <div class="bubble bubble-9"></div>
-        <div class="bubble bubble-10"></div>
-        <div class="bubble bubble-11"></div>
-        <div class="bubble bubble-12"></div>
-        <div class="bubble bubble-13"></div>
-        <div class="bubble bubble-14"></div>
-        <div class="bubble bubble-15"></div>
-        <div class="bubble bubble-16"></div>
-        <div class="bubble bubble-17"></div>
-        <div class="bubble bubble-18"></div>
-        <div class="bubble bubble-19"></div>
-        <div class="bubble bubble-20"></div>
-        <div class="bubble bubble-21"></div>
-        <div class="bubble bubble-22"></div>
-        <div class="bubble bubble-23"></div>
-        <div class="bubble bubble-24"></div>
-        <div class="bubble bubble-25"></div>
-        <div class="bubble bubble-26"></div>
-        <div class="bubble bubble-27"></div>
-        <div class="bubble bubble-28"></div>
-        <div class="bubble bubble-29"></div>
-        <div class="bubble bubble-30"></div>
-        
-    </div>
-
-    <script>
-        function randomizeCreaturePositions() {
-            document.querySelectorAll('.sea-creature').forEach(creature => {
-                const randomTop = Math.random() * 80; // Ngẫu nhiên trong khoảng 0-80%
-                const randomLeft = Math.random() * 100; // Ngẫu nhiên trong khoảng 0-100%
-                creature.style.top = `${randomTop}%`;
-                creature.style.left = `${randomLeft}%`;
-            });
-
-            // Randomize bubbles
-            document.querySelectorAll('.bubble').forEach(bubble => {
-                const randomLeft = Math.random() * 100;
-                const randomAnimationDuration = Math.random() * 4 + 4; // 4s đến 8s
-                bubble.style.left = `${randomLeft}%`;
-                bubble.style.animationDuration = `${randomAnimationDuration}s`;
-            });
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(180deg, #1a4b77 0%, #0f2d47 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
         }
 
-        // Đặt vị trí ban đầu và cập nhật mỗi 8 giây
-        randomizeCreaturePositions();
-        setInterval(randomizeCreaturePositions, 8000);
+        /* Animated fish */
+        .fish {
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            animation: swim 15s linear infinite;
+            opacity: 0.7;
+        }
 
+        .fish1 { top: 20%; animation-delay: 0s; }
+        .fish2 { top: 40%; animation-delay: -5s; } 
+        .fish3 { top: 60%; animation-delay: -10s; }
+
+        @keyframes swim {
+            from { transform: translateX(-100px); }
+            to { transform: translateX(calc(100vw + 100px)); }
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 40px;
+            position: relative;
+            z-index: 1;
+            gap: 40px;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            width: 48%; /* Đảm bảo khung có kích thước bằng nhau */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .chat-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            height: 400px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 10px 15px;
+            border-radius: 10px;
+            max-width: 80%;
+        }
+
+        .ai {
+            background: rgba(0, 195, 255, 0.2);
+            margin-right: auto;
+        }
+
+        .user {
+            background: rgba(255, 255, 255, 0.2);
+            margin-left: auto;
+            text-align: right;
+        }
+
+        #imageContainer {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            min-height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        #imageContainer img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+        }
+
+        #assignImageButton {
+            background: linear-gradient(45deg, #00a8e8, #0077cc);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #assignImageButton:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        #predictionResult {
+            text-align: center;
+            font-size: 24px;
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 195, 255, 0.1);
+            border-radius: 10px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Bubble animation */
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 8s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh); opacity: 0; }
+            50% { opacity: 0.6; }
+            100% { transform: translateY(-100px); opacity: 0; }
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .user-input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            font-size: 16px;
+            resize: none;
+            box-sizing: border-box;
+        }
+
+        .user-input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 195, 255, 0.6);
+        }
+
+        .send-button {
+            padding: 12px;
+            background: linear-gradient(45deg, #00a8e8, #0077cc);
+            border: none;
+            color: white;
+            border-radius: 10px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .send-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Adjusting file input */
+        #fileInput {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated fish -->
+    <svg class="fish fish1" viewBox="0 0 100 100">
+        <path fill="#FFA07A" d="M20,50 Q40,35 60,50 Q40,65 20,50 M60,50 L80,40 L80,60 Z"/>
+    </svg>
+    <svg class="fish fish2" viewBox="0 0 100 100">
+        <path fill="#98FB98" d="M20,50 Q40,35 60,50 Q40,65 20,50 M60,50 L80,40 L80,60 Z"/>
+    </svg>
+    <svg class="fish fish3" viewBox="0 0 100 100">
+        <path fill="#87CEEB" d="M20,50 Q40,35 60,50 Q40,65 20,50 M60,50 L80,40 L80,60 Z"/>
+    </svg>
+
+    <!-- Bubbles -->
+    <div id="bubbles"></div>
+
+        <!-- Các phần tử giao diện không thay đổi -->
+        <div class="container">
+            <!-- AI Chat Section -->
+            <div class="info-box">
+                <h1>🐠 AI's Ocean Information</h1>
+                <div class="chat-box" id="chatBox">
+                    <!-- Messages will be displayed here -->
+                </div>
+                <div class="input-container">
+                    <textarea class="user-input" id="userInput" placeholder="Type your message..."></textarea>
+                    <button class="send-button" id="sendButton">Send</button>
+                </div>
+            </div>
+    
+            <!-- Fish Classification Section -->
+            <div class="info-box">
+                <h1>🐟 Fish Classification</h1>
+                <button id="assignImageButton">Import Fish Image</button>
+                <input type="file" id="fileInput" accept="image/*">
+                <div id="imageContainer">
+                    <!-- Image will be displayed here -->
+                </div>
+                <div id="predictionResult">
+                    Category: Waiting for image...
+                </div>
+            </div>
+        </div>
+
+    <script>
+        // Các chức năng bubbles, cá bơi vẫn giữ nguyên
+
+        // Phần gửi và nhận tin nhắn từ AI
+        document.getElementById('sendButton').addEventListener('click', function() {
+            const userInput = document.getElementById('userInput').value;
+            if (userInput.trim() !== "") {
+                sendUserMessage(userInput);
+                document.getElementById('userInput').value = ""; // Xóa nội dung sau khi gửi
+            }
+        });
+
+        function sendUserMessage(message) {
+            const chatBox = document.getElementById('chatBox');
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user';
+            userMessage.textContent = message;
+            chatBox.appendChild(userMessage);
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            // Gửi tin nhắn đến AI để nhận phản hồi
+            sendAIMessage(message);
+        }
+
+        function sendAIMessage(message) {
+            const chatEndpoint = 'http://127.0.0.1:8000/chat'; // Đảm bảo API này có thể nhận và trả về phản hồi
+            const requestData = { message: message };
+
+            fetch(chatEndpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const chatBox = document.getElementById('chatBox');
+                    const aiMessage = document.createElement('div');
+                    aiMessage.className = 'message ai';
+                    aiMessage.textContent = data.response || "Không có phản hồi từ AI.";
+                    chatBox.appendChild(aiMessage);
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                })
+                .catch(error => {
+                    console.error("Lỗi khi gửi tin nhắn đến chatbot:", error);
+                    const chatBox = document.getElementById('chatBox');
+                    const aiMessage = document.createElement('div');
+                    aiMessage.className = 'message ai';
+                    aiMessage.textContent = "Lỗi kết nối với chatbot.";
+                    chatBox.appendChild(aiMessage);
+                    chatBox.scrollTop = chatBox.scrollHeight;
+                });
+        }
+
+        // Phần tải ảnh và phân loại hình ảnh
         document.getElementById('assignImageButton').addEventListener('click', function() {
             document.getElementById('fileInput').click();
         });
-        
+
         document.getElementById('fileInput').addEventListener('change', function(event) {
             var file = event.target.files[0];
             if (file) {
@@ -128,42 +309,33 @@
                     img.src = e.target.result;
                     img.alt = "Selected Image";
                     var imageContainer = document.getElementById('imageContainer');
-                    imageContainer.innerHTML = '';  // Xóa ảnh cũ
-                    imageContainer.appendChild(img);  // Thêm ảnh mới vào khung
-        
-                    // Gọi API phân loại sau khi hiển thị ảnh
+                    imageContainer.innerHTML = '';
+                    imageContainer.appendChild(img);
                     classifyImage(file);
                 };
                 reader.readAsDataURL(file);
             }
         });
-        
+
         function classifyImage(file) {
-            // Tạo đối tượng FormData để gửi ảnh tới API
             const formData = new FormData();
-            formData.append("file", file);  // Sử dụng 'file' làm key theo yêu cầu của API
-        
-            // Gửi yêu cầu POST tới API phân loại ảnh
+            formData.append("file", file);
+
             fetch('http://127.0.0.1:8000/classify', {
                 method: 'POST',
                 body: formData
             })
-            .then(response => response.json())  // Phân tích JSON từ phản hồi
-            .then(data => {
-                // Giả sử API trả về đối tượng có thuộc tính 'label' chứa nhãn phân loại
-                const label = data.label || "Unknown";  // Nếu không có nhãn, hiển thị "Unknown"
-                
-                // Hiển thị kết quả phân loại trên giao diện
-                document.getElementById('predictionResult').textContent = `Category: ${label}`;
-            })
-            .catch(error => {
-                console.error("Error classifying image:", error);
-                document.getElementById('predictionResult').textContent = "Category: Error classifying image.";  // Hiển thị thông báo lỗi
-            });
+                .then(response => response.json())
+                .then(data => {
+                    const imageLabel = data.label || "Không xác định";
+                    document.getElementById('predictionResult').textContent = `Category: ${imageLabel}`;
+                    sendAIMessage(`Thông tin ngắn gọn về "${imageLabel}"`);
+                })
+                .catch(error => {
+                    console.error("Lỗi khi phân loại hình ảnh:", error);
+                    document.getElementById('predictionResult').textContent = "Category: Lỗi khi phân loại hình ảnh.";
+                });
         }
-        
-        
-        
     </script>
 </body>
 </html>
